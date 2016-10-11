@@ -3,5 +3,5 @@
 ## Run it
 * ` $ Shotgun` or `$ Unicorn` (look into the difference)
 
-## For some really good reading, look at the copy of jquery.js 
-## in public/js/
+## Also: 
+* For some really good reading, look at the copy of jquery.js in public/js/
