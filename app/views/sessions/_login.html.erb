@@ -1,0 +1,8 @@
+<form id="login_user_form" action="/sessions/login" method="POST">
+   <input type="text" name="user[email]" placeholder="Enter Email">
+   <input type="password" name="user[password]" placeholder="Enter Password">
+   <input type="submit" name="Login">
+</form>  
+<%if @errors%>
+   <span><%=@errors%>, Please Try Again (or Register)</span>
+<%end%>
