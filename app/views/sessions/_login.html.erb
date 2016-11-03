@@ -1,4 +1,4 @@
-<form id="login_user_form" action="/sessions/login" method="POST">
+<form id="login_user_form" action="/sessions" method="POST">
    <input type="text" name="user[email]" placeholder="Enter Email">
    <input type="password" name="user[password]" placeholder="Enter Password">
    <input type="submit" name="Login">
@@ -6,3 +6,5 @@
 <%if @errors%>
    <span><%=@errors%>, Please Try Again (or Register)</span>
 <%end%>
+<%@thing = 1%>
+<%= erb :"/sessions/_fake_partial.html", locals: {bongo_burger: @errors} %>

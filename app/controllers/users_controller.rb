@@ -1,11 +1,21 @@
 get '/users/?' do
-   redirect "/"
+   # redirect "/"
+   content_type :json
+   @users = User.all
+   # p @users_json = User.all.to_json
+   erb :"/users/_index.html"
+
+   # p "I'm stubbed out right now"
 end
 
 #NEW (GET)
 
 get '/users/new/?' do
-   erb :'/users/_new.html', layout: !request.xhr?
+   if request.xhr?
+      p erb :'/users/_new.html', layout: false
+   else
+      erb :'/users/_new.html'
+   end
 end
 
 #SHOW (GET)
@@ -27,7 +37,7 @@ end
 post '/users/?' do
    
    if params[:password_confirmation] == params[:user][:password]
-
+      @errors = ""
       @user = User.new(params[:user])
 
       if @user.save

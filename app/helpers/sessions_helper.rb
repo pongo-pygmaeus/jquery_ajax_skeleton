@@ -8,4 +8,6 @@ helpers do
       current_user
    end
 
+   # def login
+
 end

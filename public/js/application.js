@@ -3,6 +3,7 @@ $( document ).ready( function () {
    // console.log( $( document ) );
    headerLinkListener( ".login_link" );
    headerLinkListener( ".register_link" );
+   userLinkListener("#user_index");
    headerFormSubmitListener( "#register_new_user_form" );
    headerFormSubmitListener( "#login_user_form" );
    headerFormSubmitListener( "#logout_user_form" );
@@ -35,6 +36,7 @@ var generateRandomColor = function () {
 
 var doSomeCrazyStuff = function() {
    $( "div" ).on( "mouseover", "h1", function( event ) {
+
       event.preventDefault();
       var targetElement = $( this );
       targetElement.css('color', generateRandomColor());
@@ -45,6 +47,31 @@ var setupHeaderForm = function( response ) {
    var targetParentListener = $ ( "#header_login_register_div" );
    targetParentListener.empty();
    targetParentListener.append(response);
+};
+
+var userLinkListener = function( link_id_name ) {
+   $( link_id_name ).on( "click", function( event ) {
+      event.preventDefault();
+
+      var link = $(this);
+
+      var request = $.ajax({
+         method:  "GET",
+         url:     link.attr( 'href' )
+      });
+      
+      request.done( function( response ) {
+         console.log("Header Link Response: ");
+         console.log(response);
+         // console.log($.parseJSON(response));
+      });
+
+      request.fail( function( response ){
+         // console.log("FAIL Header Link Response:");
+         // console.log(response);
+         alert("Failed to access " + link.attr( 'href' ));
+      });
+   });
 };
 
 var headerLinkListener = function(link_class_name) {
@@ -58,9 +85,13 @@ var headerLinkListener = function(link_class_name) {
          url:     link.attr( 'href' )
       })
       .done( function( response ) {
+         console.log("Header Link Response: ")
+         console.log(response);
          setupHeaderForm( response );
       })
       .fail( function( response ){
+         console.log("FAIL Header Link Response:")
+         console.log(response);
          alert("Failed to access " + link.attr( 'href' ));
       });
    });
@@ -79,9 +110,13 @@ var headerFormSubmitListener = function( form_id_name ) {
          data:    form_id_name.serialize()
       })
       .done( function( response ) {
+         console.log("Header Form Response: ");
+         console.log(response);
          setupHeaderForm( response );
       })
       .fail( function( response ){
+         console.log("FAIL Header Form Response:");
+         console.log(response);
          alert( "Failed to " + form_id_name.attr( 'method' ) 
                 + " to " + form_id_name.attr( 'action' ));
       });

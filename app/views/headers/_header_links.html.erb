@@ -1,11 +1,11 @@
 <% if logged_in? %>
    <span><%= current_user.username %></span>
-   <form id="logout_user_form" action="/sessions/logout" method="POST">
+   <form id="logout_user_form" action="/sessions/logout" method="GET">
       <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Logout">
    </form>
 <% else %>
    <a class="register_link" href="/users/new">REGISTER</a>
    <br/>
-   <a class="login_link" href="/sessions/login">LOG IN</a>      
+   <a class="login_link" href="/sessions/new">LOG IN</a>      
 <% end %>
