@@ -1,9 +1,19 @@
+require_relative '../models/youtube_api_adapter'
 get '/users/?' do
    # redirect "/"
-   content_type :json
-   @users = User.all
-   # p @users_json = User.all.to_json
-   erb :"/users/_index.html"
+   # # content_type :json
+   # # @users = User.all
+   p @users_json = User.all.to_json
+   # p ENV['SOME_KEY']
+   # p results = YouTubeAPIAdapter.custom_search("potatoes+coyotes").to_json 
+   # # parsed_results = []
+   # p search_results = JSON.parse( results )
+   # search_results.each do |item|
+   #    p item#[:url] #= "http://www.youtube.com/watch?v=#{item['id']['videoId']}"
+   # #    p item[:thumbnail] # = item['snippet']['thumbnails']['medium']['url']
+   # end
+   # parsed_results
+   # erb :"/users/_index.html"
 
    # p "I'm stubbed out right now"
 end

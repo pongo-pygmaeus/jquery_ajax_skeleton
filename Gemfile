@@ -21,6 +21,10 @@ gem 'haml'
 
 gem 'bcrypt'
 
+gem 'httparty'
+
+gem 'dotenv'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
