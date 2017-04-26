@@ -1,0 +1,33 @@
+<h1>Subscribed Channels</h1>
+
+<% subscribed_channels.each do |channel| %>
+  <%= channel.name %>
+  <%= channel.callsign %>
+
+  <% subscription = Subscription.find_by_user_id_and_channel_id(user.id, channel.id) %>
+  
+  <form id="delete_subscription" action="/users/<%=user.id%>/subscriptions/<%=subscription.id%>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Unsubscribe">
+  </form>
+  <br>
+
+<% end %>
+
+<br>
+
+<h1>Unsubscribed Channels</h1>
+
+<% unsubscribed_channels.each do |channel| %>
+  <%= channel.name %>
+  <%= channel.callsign %>
+
+  <form id="add_subscription" action="/users/<%=user.id%>/subscriptions" method="POST">
+    <input type="hidden", name="channel_id", value="<%=channel.id%>">
+    <input type="submit" value="Subscribe">
+  </form>
+  <br>
+
+<% end %>
+
+<a href="/">Home</a>
