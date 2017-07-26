@@ -1,0 +1,8 @@
+<ul class="quote_list">
+  <% @quotes.each do |quote| %>
+    <%= erb :"/quotes/_quote.html", locals: {quote: quote} %>
+  <% end %>
+</ul>
+<div id="new_quote_container">
+  <a id="new_quote_link" href="/quotes/new">Make a new quote!!!!</a>
+</div>

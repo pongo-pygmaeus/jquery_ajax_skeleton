@@ -1,4 +1,3 @@
 get '/' do
-   p session
-	erb :index, layout: !request.xhr?
+	redirect "/quotes"
 end
