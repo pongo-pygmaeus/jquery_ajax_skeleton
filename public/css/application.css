@@ -1,4 +1,12 @@
 #header_container {
-  height: 10vh; 
+  height: 10vh;
   overflow: hidden;
+}
+
+body {
+  padding: 10px;
+}
+
+li {
+  color: blue;
 }

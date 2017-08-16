@@ -1,13 +1,35 @@
 $( document ).ready( function () {
-   // console.log( $.type );
-   // console.log( $( document ) );
    headerLinkListener( ".login_link" );
    headerLinkListener( ".register_link" );
    headerFormSubmitListener( "#register_new_user_form" );
    headerFormSubmitListener( "#login_user_form" );
    headerFormSubmitListener( "#logout_user_form" );
    doSomeCrazyStuff();
+   hackLinkListener();
 });
+
+var hackLinkListener = function(){
+   $("#hack-link").on("click", function(event){
+      event.preventDefault();
+      var hackLink = $(this);
+      // debugger
+      var hackUrl    = "/hacks"
+      var hackMethod = "POST"
+
+      $.ajax({
+         url: hackUrl,
+         method: hackMethod
+      })
+      .done(function(response){
+         console.log(response)
+         $("#hack-list").append(response);
+         // Use jQuery to append response.text to page?
+      })
+      .fail(function(response){
+         console.error("Bad Response")
+      })
+   })
+}
 
 var generateRandomColor = function () {
    var num = Math.floor((Math.random() * 4) + 0);
@@ -82,7 +104,7 @@ var headerFormSubmitListener = function( form_id_name ) {
          setupHeaderForm( response );
       })
       .fail( function( response ){
-         alert( "Failed to " + form_id_name.attr( 'method' ) 
+         alert( "Failed to " + form_id_name.attr( 'method' )
                 + " to " + form_id_name.attr( 'action' ));
       });
    });
