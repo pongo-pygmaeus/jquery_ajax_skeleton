@@ -16,14 +16,15 @@ var hackLinkListener = function(){
       var hackUrl    = "/hacks"
       var hackMethod = "POST"
 
-      $.ajax({
+      $.ajax({ //Go to the server and hit a controller route
          url: hackUrl,
          method: hackMethod
       })
-      .done(function(response){
+      .done(function(response){ //Take whatever server
+                                //sends back and do something
+                                //with it
          console.log(response)
-         $("#hack-list").append(response);
-         // Use jQuery to append response.text to page?
+         $("h1").append(response);
       })
       .fail(function(response){
          console.error("Bad Response")

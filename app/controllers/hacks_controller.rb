@@ -10,7 +10,7 @@ post '/hacks' do
   @hack = Hack.new(text: Faker::Hacker.say_something_smart)
   # Come back later and finish this
   if @hack.save
-    if request.xhr?
+    if request.xhr? #is this a request from JS or not?
       # content_type :json #Tell rack we're sending a JSON object back
       # @hack.to_json
       # Render the new thing as JSON
